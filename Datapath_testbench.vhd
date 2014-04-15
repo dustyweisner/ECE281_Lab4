@@ -1,6 +1,6 @@
 --------------------------------------------------------------------------------
--- Company: 
--- Engineer:
+-- Company: USAFA
+-- Engineer:Dusty Weisner
 --
 -- Create Date:   13:27:11 07/10/2012
 -- Design Name:   
