@@ -66,5 +66,5 @@ Since the first 50 ns was analyzed for me, I began around 50 ns, and ended at ar
 ![](https://github.com/dustyweisner/ECE281_Lab4/blob/master/PRISM_Reverse.GIF?raw=true)
 
 
-The program continues to jump using the JN instruction until the accumulator is not negative. When the jumps end, it continues through an infinite loop as to not crash using the JMP instruction. 
+The program continues to jump using the JN instruction starting at around 195 ns jumping to address $02, which is the ROR command, until the accumulator is not negative. Notice that the least significant bit is first followed by $0 at 225 ns. When the jumps end, it continues through an infinite loop as to not crash using the JMP instruction. 
 
