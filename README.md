@@ -52,3 +52,19 @@ The Operation of the Testbench works in the place of the Controller. It gives th
 __*REVERSE ENGINEERING*__
 
 
+To reverse engineer, I first analyzed how the waveform was produced, using the waveform below (split into two parts):
+
+
+![](https://github.com/dustyweisner/ECE281_Lab4/blob/master/SIMpart1.GIF?raw=true)
+
+![](https://github.com/dustyweisner/ECE281_Lab4/blob/master/SIMpart2.GIF?raw=true)
+
+
+Since the first 50 ns was analyzed for me, I began around 50 ns, and ended at around 100 ns. At 55 ns, the instruction was ROR because the IR was '3', and also because at the end of the prior instruction (LDAI), at 45 ns the DATA said '3' prompting the next instruction. The DATA ('4') then marks the next instruction. Notice the impedence part of the ROR instruction. The DATA ('4') then marks the next instruction again, which is OUT. The DATA next says '3' which stores the accumulator value into Output port 3, at around 105 ns. The rest of the program was analyzed and chunked into PRISM instructions as shown below:
+
+
+![](https://github.com/dustyweisner/ECE281_Lab4/blob/master/PRISM_Reverse.GIF?raw=true)
+
+
+The program continues to jump using the JN instruction until the accumulator is not negative. When the jumps end, it continues through an infinite loop as to not crash using the JMP instruction. 
+
