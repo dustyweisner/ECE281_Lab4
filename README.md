@@ -27,12 +27,27 @@ The OpSel was given to the multiplexer to find the instruction (0-7) that would 
 To test and debug the ALU Testbench, I looked at the specific bits that are required for the input of each instruction and the results that occured and compared them to what they should have been. For example, if OpSel is "000," then I performed the AND instruction, ANDing Data ("0001") and the Accumulator ("0000") resulting in "0000". if OpSel is "001," then I performed the NEG instruction, taking the Two's Compliment of the Accumulator ("0100") resulting in "1100". I went through the entire waveform, and concluded that all of my instructions worked perfectly using those techniques.
 
 
-As for the Datapath shell,
+As for the Datapath shell, I made a Component out of the ALU shell and instantiated it. From there I used the rest of the PRISM schematic, as shown below:
 
+
+![](https://github.com/dustyweisner/ECE281_Lab4/blob/master/PRISM_Schematic.GIF?raw=true)
+
+
+I started by looking at all of the Registers and their connections. I then used each Input, Load, Clear, and Clk to define the Output of each register. For example, if IRLd is '1', the IR is Data, and still taking into account the Reset, making IR "0000" when Reset_L is '0'. Also, if MARLo was on then MARHi was off, because together they make an 8-bit for the Program Counter Register. The other registers were created similarly, except the Data, which is set to 
+Accumulator when EnAccBuffer is on, else set it to high impedence. Also implementing datpath signals was different. 
+
+
+To test and debug the Datapath, I initially used the waveform given to match the produced waveform given below, which matched perfecly again.
 
 
 ![](https://github.com/dustyweisner/ECE281_Lab4/blob/master/DatapathSim.GIF?raw=true)
 
 
+But then to test and debug more in depth, I reverse engineered it, which will be discussed under the "REVERSE ENGINEERING" section.
+
+
+The Operation of the Testbench works in the place of the Controller. It gives the loads values and loads in specific instructions, so that the hardware can be tested for each specific intruction.
+
 __*REVERSE ENGINEERING*__
+
 
